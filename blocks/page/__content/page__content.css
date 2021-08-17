@@ -1,6 +1,7 @@
 .page__content {
   box-sizing: border-box;
   padding: 0;
+  transition: 1.5s;
 }
 
 @media screen and (max-width: 918px) {

@@ -2,6 +2,7 @@
   grid-area: image;
   margin: 3.75px 26.25px 3.75px 0;
   border-radius: 50%;
+  transition: 1.5s;
 }
 
 @media screen and (max-width: 700px) {

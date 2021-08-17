@@ -10,6 +10,7 @@
   align-items: center;
   box-sizing: border-box;
   padding: 34px 36px 37px;
+  transition: 1.5s;
 }
 
 @media screen and (max-width: 680px) {
