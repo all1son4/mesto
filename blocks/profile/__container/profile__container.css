@@ -5,7 +5,7 @@
   grid-template-areas:
   "image name button"
   "image description description";
-  transition: 1.5s;
+  transition: 1.2s;
 }
 
 @media screen and (max-width: 700px) {

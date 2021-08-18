@@ -1,7 +1,7 @@
 .page__footer {
   box-sizing: border-box;
   padding: 67px 0 60px;
-  transition: 1.5s;
+  transition: 1.2s;
 }
 
 @media screen and (max-width: 918px) {

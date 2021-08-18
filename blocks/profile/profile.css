@@ -4,7 +4,7 @@
   justify-content: space-between;
   box-sizing: border-box;
   padding: 36.25px 0 47.25px;
-  transition: 1.5s;
+  transition: 1.2s;
 }
 
 @media screen and (max-width: 918px) {

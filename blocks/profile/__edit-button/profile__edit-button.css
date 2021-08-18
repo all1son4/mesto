@@ -11,7 +11,7 @@
   align-self: center;
   border: 1px solid white;
   cursor: pointer;
-  transition: 1.5s;
+  transition: 1.2s;
 }
 
 @media screen and (max-width: 700px) {

@@ -10,7 +10,6 @@
   text-align: center;
   color: #FFFFFF;
   cursor: pointer;
-  transition: 1.5s;
 }
 
 @media screen and (max-width: 680px) {
