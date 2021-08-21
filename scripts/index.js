@@ -1,3 +1,8 @@
+window.onload = function() {
+  page = document.querySelector('.page');
+  page.classList.remove('page__load');
+}
+
 let openPopupButton = document.querySelector('.profile__edit-button');
 let popup = document.querySelector('.popup');
 let closePopupButton = document.querySelector('.popup__close-button');
@@ -31,7 +36,3 @@ openPopupButton.addEventListener('click', switchPopup);
 closePopupButton.addEventListener('click', switchPopup);
 
 formElement.addEventListener('submit', formSubmitHandler);
-
-$(window).load(function() {
-  $("body").removeClass("page__load");
-});
