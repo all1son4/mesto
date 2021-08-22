@@ -1,5 +1,5 @@
 .popup__title {
-  margin: 0 0 54px;
+  margin: 0 0 40px;
   align-self: flex-start;
   font-weight: 900;
   font-size: 24px;
@@ -11,6 +11,6 @@
   .popup__title {
     font-size: 18px;
     line-height: 22px;
-    margin: 0 0 75px;
+    margin: 0 0 70px;
   }
 }

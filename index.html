@@ -7,13 +7,15 @@
   <link rel="stylesheet" href="./pages/index.css">
   <title>Project Mesto</title>
 </head>
-<body id="body" class="page page__load">
+<body class="page page__load">
 
   <div class="page__container">
 
     <header class="header page__header">
       <img src="./images/header__logo.svg" class="header__logo" alt="Логотип проекта">
     </header>
+
+    <main class="content">
 
     <section class="profile page__content">
       <div class="profile__container">
@@ -70,16 +72,18 @@
       </div>
     </section>
 
+    </main>
+
     <footer class="footer page__footer">
       <p class="footer__text">&copy; 2021 Mesto Russia</p>
     </footer>
 
     <section class="popup">
       <div class="popup__container">
+        <h2 class="popup__title">Редактировать профиль</h2>
         <form name="form" id="form">
-          <h2 class="popup__title">Редактировать профиль</h2>
-          <input type="text" name="name" class="popup__field">
-          <input type="text" name="description" class="popup__field">
+          <input type="text" name="name" placeholder="Имя" class="popup__field">
+          <input type="text" name="description" placeholder="Описание" class="popup__field">
           <button type="submit" class="popup__submit-button">Сохранить</button>
         </form>
         <button type="button" class="popup__close-button"></button>
@@ -88,7 +92,6 @@
 
   </div>
 
-  <script src="https://yastatic.net/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
   <script src="./scripts/index.js"></script>
 </body>
 </html>

@@ -1,4 +1,8 @@
 .profile__description {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 293px;
   margin: 0;
   color: #FFFFFF;
   grid-area: description;
@@ -7,15 +11,11 @@
   font-weight: normal;
   font-size: 18px;
   line-height: 22px;
-  transition: 1.2s;
-  -webkit-transition: 1.2s;
-  -moz-transition: 1.2s;
-  -ms-transition: 1.2s;
-  -o-transition: 1.2s;
 }
 
 @media screen and (max-width: 700px) {
   .profile__description {
+    max-width: 188.25px;
     font-size: 14px;
     line-height: 17px;
     justify-self: center;

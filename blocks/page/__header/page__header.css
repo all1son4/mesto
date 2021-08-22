@@ -2,11 +2,6 @@
   box-sizing: border-box;
   padding: 45px 0 41px;
   border-bottom: 1px solid rgba(84, 84, 84, .7);
-  transition: 1.2s;
-  -webkit-transition: 1.2s;
-  -moz-transition: 1.2s;
-  -ms-transition: 1.2s;
-  -o-transition: 1.2s;
 }
 
 @media screen and (max-width: 918px) {

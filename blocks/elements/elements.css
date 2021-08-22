@@ -5,11 +5,6 @@
   grid-column-gap: 17px;
   grid-row-gap: 20px;
   max-width: 100%;
-  transition: 1.2s;
-  -webkit-transition: 1.2s;
-  -moz-transition: 1.2s;
-  -ms-transition: 1.2s;
-  -o-transition: 1.2s;
 }
 
 @media screen and (max-width: 320px) {

@@ -4,11 +4,6 @@
   font-size: 18px;
   line-height: 22px;
   color: #545454;
-  transition: 1.2s;
-  -webkit-transition: 1.2s;
-  -moz-transition: 1.2s;
-  -ms-transition: 1.2s;
-  -o-transition: 1.2s;
 }
 
 @media screen and (max-width:680px) {

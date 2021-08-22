@@ -10,11 +10,6 @@
   align-self: center;
   border: 2px solid white;
   cursor: pointer;
-  transition: 1.2s;
-  -webkit-transition: 1.2s;
-  -moz-transition: 1.2s;
-  -ms-transition: 1.2s;
-  -o-transition: 1.2s;
 }
 
 @media screen and (max-width: 700px) {

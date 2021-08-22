@@ -1,7 +1,7 @@
 .popup {
   z-index: 1;
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: -200px;
   right: 0;
   bottom: 0;
   left: 0;
@@ -10,4 +10,10 @@
   align-items: center;
   justify-content: center;
   display: none;
+}
+
+@media screen and (max-width: 680px) {
+  .popup {
+    top: -320px;
+  }
 }

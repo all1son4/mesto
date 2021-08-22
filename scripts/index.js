@@ -1,8 +1,3 @@
-window.onload = function() {
-  page = document.querySelector('.page');
-  page.classList.remove('page__load');
-}
-
 let openPopupButton = document.querySelector('.profile__edit-button');
 let popup = document.querySelector('.popup');
 let closePopupButton = document.querySelector('.popup__close-button');
@@ -10,11 +5,13 @@ let formElement = document.querySelector('#form');
 let nameInput = document.querySelectorAll('.popup__field')[0];
 let descriptionInput = document.querySelectorAll('.popup__field')[1];
 let popupSubmitButton = document.querySelector('.popup__submit-button');
+let profileName = document.querySelector('.profile__name');
+let profileDescription = document.querySelector('.profile__description');
 
 function switchPopup() {
   if (!popup.classList.contains('popup_opened')) {
-    nameInput.value = document.querySelector('.profile__name').textContent;
-    descriptionInput.value = document.querySelector('.profile__description').textContent;
+    nameInput.value = profileName.textContent;
+    descriptionInput.value = profileDescription.textContent;
   }
 
   popup.classList.toggle('popup_opened');
@@ -23,13 +20,13 @@ function switchPopup() {
 function formSubmitHandler(event) {
   event.preventDefault();
 
-  let name = document.querySelector('.profile__name');
-  let description = document.querySelector('.profile__description')
+  let name = profileName;
+  let description = profileDescription;
 
   name.textContent = nameInput.value;
   description.textContent = descriptionInput.value;
 
-  popup.classList.toggle('popup_opened');
+  switchPopup();
 }
 
 openPopupButton.addEventListener('click', switchPopup);

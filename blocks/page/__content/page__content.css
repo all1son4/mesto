@@ -1,11 +1,6 @@
 .page__content {
   box-sizing: border-box;
   padding: 0;
-  transition: 1.2s;
-  -webkit-transition: 1.2s;
-  -moz-transition: 1.2s;
-  -ms-transition: 1.2s;
-  -o-transition: 1.2s;
 }
 
 @media screen and (max-width: 918px) {

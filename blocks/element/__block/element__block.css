@@ -1,7 +1,7 @@
 .element__block {
   margin: 0 auto;
   box-sizing: border-box;
-  padding: 25px 15px 31px 21px;
+  padding: 20px 15px 27px 21px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
