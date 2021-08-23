@@ -20,11 +20,8 @@ function switchPopup() {
 function formSubmitHandler(event) {
   event.preventDefault();
 
-  let name = profileName;
-  let description = profileDescription;
-
-  name.textContent = nameInput.value;
-  description.textContent = descriptionInput.value;
+  profileName.textContent = nameInput.value;
+  profileDescription.textContent = descriptionInput.value;
 
   switchPopup();
 }
