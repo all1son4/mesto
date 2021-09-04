@@ -3,5 +3,7 @@
   border-radius: 15px;
   background-color: white;
   overflow: hidden;
-}
+  display: grid;
+  grid-template-rows: 282px 1fr;
 
+}
