@@ -5,7 +5,7 @@ const popupCard = document.querySelector('.popup_type_new-card');
 const popupImage = document.querySelector('.popup_type_image');
 const cardAddButton = document.querySelector('.profile__add-button');
 const closePopupButtons = document.querySelectorAll('.popup__close-button');
-const formElement = document.querySelector('#form-profile');
+const formProfile = document.querySelector('#form-profile');
 const formCard = document.querySelector('#form-card');
 const nameInput = document.querySelector('.popup__field_type_profile-name');
 const descriptionInput = document.querySelector('.popup__field_type_profile-description');
@@ -75,12 +75,10 @@ const openPopup = (popup) => {
   popup.classList.add('popup_opened');
 };
 
-const openEditPrifilePopup = (popup) => {
-  if (popup.classList.contains('popup_type_edit')) {
+const openEditProfilePopup = (popupProfile) => {
     nameInput.value = profileName.textContent;
     descriptionInput.value = profileDescription.textContent;
-    openPopup(popup);
-  }
+    openPopup(popupProfile);
 }
 
 const closePopup = (popup) => {
@@ -88,7 +86,7 @@ const closePopup = (popup) => {
 };
 
 
-function formEditProfileSubmitHandler(event) {
+function editFormProfileSubmitHandler(event) {
   event.preventDefault();
 
   profileName.textContent = nameInput.value;
@@ -99,21 +97,16 @@ function formEditProfileSubmitHandler(event) {
 
 function addCardSubmitHandler(event) {
   event.preventDefault();
-  if(cardNameInput.value === '' || cardSrcInput.value === '') {
-    closePopup(popupCard);
-  }
-  else {
     renderCard({
       name: cardNameInput.value,
       link: cardSrcInput.value
     });
   formCard.reset();
   closePopup(popupCard);
-  }
 };
 
 openPopupButton.addEventListener('click', () => {
-  openEditPrifilePopup(popupProfile);
+  openEditProfilePopup(popupProfile);
 });
 cardAddButton.addEventListener('click', () => {
   openPopup(popupCard);
@@ -125,6 +118,6 @@ closePopupButtons.forEach((item) => {
   });
 });
 
-formElement.addEventListener('submit', formEditProfileSubmitHandler);
+formProfile.addEventListener('submit', editFormProfileSubmitHandler);
 
 formCard.addEventListener('submit', addCardSubmitHandler);
