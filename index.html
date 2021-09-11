@@ -40,10 +40,10 @@
   <div class="popup popup_type_edit">
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form name="form" id="form-profile">
-        <input type="text" id="user-name" name="name" placeholder="Имя" class="popup__field popup__field_type_profile-name popup__input" required>
+      <form name="form" id="form-profile" class="popup__form">
+        <input type="text" id="user-name" name="name" placeholder="Имя" class="popup__field popup__field_type_profile-name popup__input" minlength="2" maxlength="40" required>
         <span id="user-name-error" class="error"></span>
-        <input type="text" id="description" name="description" placeholder="Описание" class="popup__field popup__field_type_profile-description popup__input" required>
+        <input type="text" id="description" name="description" placeholder="Описание" class="popup__field popup__field_type_profile-description popup__input" minlength="2" maxlength="200" required>
         <span id="description-error" class="error"></span>
         <button type="submit" class="button popup__button popup__button_save popup__button_valid popup__submit-button">Сохранить</button>
       </form>
@@ -54,14 +54,14 @@
   <div class="popup popup_type_new-card">
     <div class="popup__container">
       <h2 class="popup__title">Новое место</h2>
-      <form name="form" id="form-card">
+      <form name="form" id="form-card" class="popup__form">
         <input type="text" id="name-card" name="name-picture" placeholder="Название" class="popup__field popup__field_type_card-name popup__input popup__input_type_name" minlength="2" maxlength="30" required>
         <span id="name-card-error" class="error"></span>
         <input type="url" id="link" name="picture-url" placeholder="Ссылка на картинку" class="popup__field popup__field_type_card-src popup__input popup__input_type_url" minlength="2" required>
         <span id="link-error" class="error"></span>
-        <button type="submit" class="popup__submit-button">Создать</button>
+        <button type="submit" class="button popup__button popup__button_add popup__button_valid popup__submit-button">Создать</button>
       </form>
-      <button type="button" class="button popup__button popup__button_add popup__button_valid popup__close-button"></button>
+      <button type="button" class="popup__close-button"></button>
     </div>
   </div>
 
