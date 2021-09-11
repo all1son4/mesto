@@ -32,6 +32,7 @@ function handleRemoveClick() {
 function handleBigSizeClick() {
   imagePopupElement.src = event.target.src;
   captionPopupElement.textContent = event.target.closest('.element').querySelector('.element__title').textContent;
+  imagePopupElement.alt = event.target.closest('.element').querySelector('.element__title').textContent;
   openPopup(popupImage)
 };
 
@@ -41,6 +42,7 @@ const createCard = (data) => {
   const cardSrc = card.querySelector('.element__image');
   cardSrc.src = data.link;
   cardName.textContent = data.name;
+  cardSrc.alt = data.name;
 
   const likeButton = card.querySelector('.element__like-button');
   const cardElementImage = card.querySelector('.element__image');
