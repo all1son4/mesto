@@ -14,12 +14,10 @@ const checkInputValidity = (formElement, inputElement, inputErrorClass, errorCla
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
 
   if (inputElement.validity.valid) {
-    hideInputError(inputElement, errorElement, inputErrorClass, errorClass);
-    // нет ошибки
+    hideInputError(inputElement, errorElement, inputErrorClass, errorClass);  // нет ошибки
   }
   else {
-    showInputError(inputElement, errorElement, inputErrorClass, errorClass);
-    // есть ошибка
+    showInputError(inputElement, errorElement, inputErrorClass, errorClass); // есть ошибка
   }
 };
 
@@ -37,23 +35,22 @@ const hasVoidInput = (inputList) => {
 
 const disableSubmitButton = (buttonElement, inactiveButtonClass) => {
   buttonElement.classList.add(inactiveButtonClass);
+  buttonElement.disabled = true;
 };
 
 const enableSubmitButton = (buttonElement, inactiveButtonClass) => {
   buttonElement.classList.remove(inactiveButtonClass);
-  buttonElement.removeAttribute("disabled");
+  buttonElement.disabled = false;
 };
 
 const toggleButtonState = (formElement, inputList, submitButtonSelector, inactiveButtonClass) => {
   const buttonElement = formElement.querySelector(submitButtonSelector);
 
   if (hasInvalidInput(inputList) || hasVoidInput(inputList)) {
-    disableSubmitButton(buttonElement, inactiveButtonClass);
-    //выключить кнопку
+    disableSubmitButton(buttonElement, inactiveButtonClass); //выключить кнопку
   }
   else {
-    enableSubmitButton(buttonElement, inactiveButtonClass);
-    //включить кнопку
+    enableSubmitButton(buttonElement, inactiveButtonClass); //включить кнопку
   }
 };
 
@@ -65,13 +62,11 @@ const setEventListeners = (formElement, inputSelector, submitButtonSelector, inp
   const inputList = Array.from(formElement.querySelectorAll(inputSelector));
 
   inputList.forEach((inputElement) => {
-    inputElement.addEventListener('input', () => {
+    inputElement.addEventListener('input', () => { //обработчики событий для одной формы
       checkInputValidity(formElement, inputElement, inputErrorClass, errorClass); //проверка валидности вводимых значений
       toggleButtonState(formElement, inputList, submitButtonSelector, inactiveButtonClass); //переключение состояния кнопки сабмит
     });
   });
-  //обработчики событий для одной формы
-
   toggleButtonState(formElement, inputList, submitButtonSelector, inactiveButtonClass);
 };
 
