@@ -89,6 +89,7 @@ const openEditProfilePopup = (popupProfile) => {
   nameInput.value = profileName.textContent;
   descriptionInput.value = profileDescription.textContent;
   openPopup(popupProfile);
+
 }
 
 const closePopup = (popup) => {
@@ -123,7 +124,11 @@ function addCardSubmitHandler(event) {
 };
 
 openPopupButton.addEventListener('click', () => {
+  const formElement = popupProfile.querySelector(validationConfig.formSelector);
+  const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputSelector));
+  const {submitButtonSelector, inactiveButtonClass} = validationConfig;
   openEditProfilePopup(popupProfile);
+  toggleButtonState(formElement, inputList, submitButtonSelector, inactiveButtonClass);
 });
 cardAddButton.addEventListener('click', () => {
   const formElement = popupCard.querySelector(validationConfig.formSelector);
