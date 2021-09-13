@@ -86,18 +86,13 @@ const openPopup = (popup) => {
 };
 
 const openEditProfilePopup = (popupProfile) => {
-  const formElement = popupProfile.querySelector(validationConfig.formSelector);
-  const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputSelector));
-  const {submitButtonSelector, inactiveButtonClass} = validationConfig;
   nameInput.value = profileName.textContent;
   descriptionInput.value = profileDescription.textContent;
   openPopup(popupProfile);
-  toggleButtonState(formElement, inputList, submitButtonSelector, inactiveButtonClass);
 }
 
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
-  formCard.reset();
   document.removeEventListener('keydown', keyHandlaer);
 };
 
@@ -131,7 +126,11 @@ openPopupButton.addEventListener('click', () => {
   openEditProfilePopup(popupProfile);
 });
 cardAddButton.addEventListener('click', () => {
+  const formElement = popupCard.querySelector(validationConfig.formSelector);
+  const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputSelector));
+  const {submitButtonSelector, inactiveButtonClass} = validationConfig;
   openPopup(popupCard);
+  toggleButtonState(formElement, inputList, submitButtonSelector, inactiveButtonClass);
 });
 
 closePopupButtons.forEach((item) => {
