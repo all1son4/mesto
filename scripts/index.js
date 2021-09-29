@@ -1,7 +1,7 @@
-import Card from './Card.js';
+import Card from './Classes/Card.js';
 import { initialCards } from './cardList.js';
 import { validationConfig } from './validationConfig.js';
-import FormValidation from './FormValidator.js';
+import FormValidation from './Classes/FormValidator.js';
 
 
 
