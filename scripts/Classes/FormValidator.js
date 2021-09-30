@@ -53,8 +53,6 @@ export default class FormValidation { //создание класса валид
   };
 
   toggleButtonState = () => { //публичный метод переключения состояния кнопки сабмита
-    this._buttonElement = this._formElement.querySelector(this._validationConfig.submitButtonSelector);
-
     if (this._hasInvalidInput() || this._hasVoidInput()) {
       this._disableSubmitButton(); //выключить кнопку
     }
@@ -78,5 +76,13 @@ export default class FormValidation { //создание класса валид
 
   enableValidation = () => { // публичный метод добавления валидации форме
     this._setEventListeners();
+  };
+
+  static resetValidation = () => {
+    this.toggleButtonState();
+
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+    });
   };
 }

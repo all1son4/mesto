@@ -5,9 +5,8 @@ export default class Card { //создание класса Карточки
     this._handImageClick = handleImageClick
   }
 
-  _getTemplate() { //приватный метод шаблона карточки
-    const cardTemplate = document
-    .querySelector('#element-template')
+  _getTemplate(cardSelector) { //приватный метод шаблона карточки
+    const cardTemplate = cardSelector
     .content
     .querySelector('.element')
     .cloneNode(true);
@@ -43,13 +42,21 @@ export default class Card { //создание класса Карточки
     });
   }
 
-  generateCard = () => { // публчиный метод создания карточки на старнице
-    this._element = this._getTemplate();
+  _generateCard = (cardSelector) => { // публчиный метод создания карточки на старнице
+    this._element = this._getTemplate(cardSelector);
     this._setEventListeners();
 
     this._element.querySelector('.element__title').textContent = this._title;
     this._element.querySelector('.element__image').src = this._image;
+    this._element.querySelector('.element__image').alt = this._title;
 
     return this._element;
   }
+
+  static createCard = (data, cardSelector, handleImageClick) => {
+    const card = new Card(data, handleImageClick);
+    const cardElement = card._generateCard(cardSelector);
+
+    return cardElement;
+  };
 }
