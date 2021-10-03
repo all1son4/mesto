@@ -78,7 +78,7 @@ export default class FormValidation { //создание класса валид
     this._setEventListeners();
   };
 
-  static resetValidation = () => {
+  resetValidation = () => {
     this.toggleButtonState();
 
     this._inputList.forEach((inputElement) => {

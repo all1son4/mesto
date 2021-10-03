@@ -1,12 +1,14 @@
 export default class Card { //создание класса Карточки
-  constructor(data, handleImageClick) {
+  constructor(data, cardSelector, handleImageClick) {
     this._image = data.link;
     this._title = data.name;
+    this._cardSelector = cardSelector;
     this._handImageClick = handleImageClick
   }
 
-  _getTemplate(cardSelector) { //приватный метод шаблона карточки
-    const cardTemplate = cardSelector
+  _getTemplate() { //приватный метод шаблона карточки
+    const cardTemplate = document
+    .querySelector(this._cardSelector)
     .content
     .querySelector('.element')
     .cloneNode(true);
@@ -42,8 +44,8 @@ export default class Card { //создание класса Карточки
     });
   }
 
-  _generateCard = (cardSelector) => { // публчиный метод создания карточки на старнице
-    this._element = this._getTemplate(cardSelector);
+  generateCard = () => { // публчиный метод создания карточки на старнице
+    this._element = this._getTemplate();
     this._setEventListeners();
 
     this._element.querySelector('.element__title').textContent = this._title;
@@ -52,11 +54,4 @@ export default class Card { //создание класса Карточки
 
     return this._element;
   }
-
-  static createCard = (data, cardSelector, handleImageClick) => {
-    const card = new Card(data, handleImageClick);
-    const cardElement = card._generateCard(cardSelector);
-
-    return cardElement;
-  };
 }
