@@ -3,7 +3,7 @@ export default class Card { //создание класса Карточки
     this._image = data.link;
     this._title = data.name;
     this._cardSelector = cardSelector;
-    this._handImageClick = handleImageClick
+    this._handleImageClick = handleImageClick
   }
 
   _getTemplate() { //приватный метод шаблона карточки
@@ -40,7 +40,7 @@ export default class Card { //создание класса Карточки
     this._element
     .querySelector('.element__image')
     .addEventListener('click', () => {  //событие открытия попапа карточки
-      this._handImageClick(this._image, this._title);
+      this._handleImageClick({link: this._image, name: this._title});
     });
   }
 
