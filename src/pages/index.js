@@ -1,8 +1,8 @@
 import './index.css';
 
 import Card from '../components/Card';
-import { initialCards } from '../components/cardList';
-import { validationConfig } from '../components/validationConfig';
+import { initialCards } from '../utils/cardList';
+import { validationConfig } from '../utils/validationConfig';
 import FormValidation from '../components/FormValidator';
 
 import PopupWithForm from '../components/PopupWithForm.js';
