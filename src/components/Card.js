@@ -1,9 +1,14 @@
+import PopupForDelete from "./PopupForDelete.js";
+
 export default class Card { //создание класса Карточки
   constructor(data, cardSelector, handleImageClick) {
     this._image = data.link;
     this._title = data.name;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick
+    this._popupSubmit = new PopupForDelete('.popup_type_delete', (event) => {
+      cardList._cardRemove(event);
+    });
   }
 
   _getTemplate() { //приватный метод шаблона карточки
@@ -33,8 +38,9 @@ export default class Card { //создание класса Карточки
 
     this._element
     .querySelector('.element__remove-button')
-    .addEventListener('click', (event) => {  //событие удаления карточки
-      this._cardRemove(event);
+    .addEventListener('click', () => {  //событие удаления карточки
+      // this._cardRemove(event);
+      this._popupSubmit.open();
     });
 
     this._element

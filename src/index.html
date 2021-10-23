@@ -72,13 +72,24 @@
     </div>
   </div>
 
+  <div class="popup popup_type_delete">
+    <div class="popup__container">
+      <h2 class="popup__title">Вы уверены?</h2>
+      <button type="submit" class="popup__submit-button popup__submit-button_type_delete">Да</button>
+      <button type="button" class="popup__close-button"></button>
+    </div>
+  </div>
+
   <template id="element-template">
     <div class="element">
       <button type="button" class="element__remove-button"></button>
       <img class="element__image"  src="#" alt="#">
       <div class="element__block">
         <h2 class="element__title"></h2>
-        <button type="button" class="element__like-button"></button>
+        <div class=element__like-block>
+          <button type="button" class="element__like-button"></button>
+          <div class="element__like-counter">0</div>
+        </div>
       </div>
     </div>
   </template>

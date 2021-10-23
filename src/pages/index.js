@@ -9,6 +9,7 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
+import PopupForDelete from '../components/PopupForDelete';
 
 const openEditPopupButton = document.querySelector('.profile__edit-button');
 const cardAddButton = document.querySelector('.profile__add-button');
@@ -84,3 +85,8 @@ cardAddButton.addEventListener('click', () => {
   formCardValidation.resetValidation();
   newCardPopup.open();
 });
+
+const deleteCardPopup = new PopupForDelete('.popup_type_delete', (event) => {
+  cardList._cardRemove(event);
+});
+deleteCardPopup.setEventListeners();

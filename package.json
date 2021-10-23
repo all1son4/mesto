@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+git@github.com:all1son4/mesto.git"
+    "url": "git+https://github.com/all1son4/mesto.git"
   },
   "author": "Dmitry Strok",
   "license": "MIT",
   "bugs": {
-    "url": "git@github.com:all1son4/mesto.git"
+    "url": "https://github.com/all1son4/mesto/issues"
   },
-  "homepage": "git@github.com:all1son4/mesto.git#readme",
+  "homepage": "https://github.com/all1son4/mesto#readme",
   "devDependencies": {
     "@babel/core": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
