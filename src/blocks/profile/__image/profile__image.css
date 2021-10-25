@@ -1,7 +1,13 @@
 .profile__image {
+  background: url(../../../images/Kusto.jpg);
+  width: 120px;
+  height: 120px;
   grid-area: image;
   margin: 3.75px 26.25px 3.75px 0;
   border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+
 }
 
 @media screen and (max-width: 700px) {

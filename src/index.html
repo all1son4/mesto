@@ -18,7 +18,9 @@
 
       <section class="profile page__content">
         <div class="profile__container">
-          <img src="<%=require('./images/Kusto.jpg')%>" class="profile__image" alt="Картинка профиля">
+          <div class="profile__image">
+            <div class="profile__overlay"></div>
+          </div>
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <p class="profile__description">Исследователь океана</p>
           <button type="button" class="profile__edit-button"></button>
@@ -76,6 +78,18 @@
     <div class="popup__container">
       <h2 class="popup__title">Вы уверены?</h2>
       <button type="submit" class="popup__submit-button popup__submit-button_type_delete">Да</button>
+      <button type="button" class="popup__close-button"></button>
+    </div>
+  </div>
+
+  <div class="popup popup_type_avatar">
+    <div class="popup__container">
+      <h2 class="popup__title">Обновить аватар</h2>
+      <form name="form" id="form-avatar" class="popup__form">
+        <input type="text" id="user-avatar" name="avatar" placeholder="Ссылка на картинку" class="popup__field popup__field_type_profile-avatar popup__input" minlength="2" required>
+        <span id="user-avatar-error" class="error"></span>
+        <button type="submit" class="popup__submit-button">Сохранить</button>
+      </form>
       <button type="button" class="popup__close-button"></button>
     </div>
   </div>

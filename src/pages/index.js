@@ -10,17 +10,22 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupForDelete from '../components/PopupForDelete';
+import UserAvatar from '../components/UserAvatar.js';
 
+const opneEditAvatarButton = document.querySelector('.profile__image')
 const openEditPopupButton = document.querySelector('.profile__edit-button');
 const cardAddButton = document.querySelector('.profile__add-button');
 const formProfile = document.querySelector('#form-profile');
 const formCard = document.querySelector('#form-card');
+const formAvatar = document.querySelector('#form-avatar');
 
 
 const userInfo = new UserInfo({
   userName: '.profile__name',
   userDescription: '.profile__description'
 });
+
+const userAvatar = new UserAvatar('.profile__image');
 
 const userInfoPopup = new PopupWithForm('.popup_type_edit', (data) => {
   userInfo.setUserInfo(data);
@@ -30,7 +35,7 @@ userInfoPopup.setEventListeners();
 const formProfileValidation = new FormValidation(validationConfig, formProfile);
 formProfileValidation.enableValidation();
 
-const openEditPopupProfileHandler =() => {
+const openEditPopupProfileHandler = () => {
   const data = userInfo.getUserInfo();
 
   for (let key in data) {
@@ -90,3 +95,24 @@ const deleteCardPopup = new PopupForDelete('.popup_type_delete', (event) => {
   cardList._cardRemove(event);
 });
 deleteCardPopup.setEventListeners();
+
+const popupWithAvatar = new PopupWithForm('.popup_type_avatar', (data) => {
+  userAvatar.setUserAvatar(data);
+})
+popupWithAvatar.setEventListeners();
+
+const popupFormAvatarValitadion = new FormValidation(validationConfig, formAvatar);
+popupFormAvatarValitadion.enableValidation();
+
+const openEditAvatarHandler = () => {
+  const data = userAvatar.getUserAvatar();
+
+  // for (let key in data) {
+  //   formAvatar.elements[key].value = data[key]
+  // };
+
+  popupFormAvatarValitadion.resetValidation();
+  popupWithAvatar.open();
+}
+
+opneEditAvatarButton.addEventListener('click', openEditAvatarHandler);
