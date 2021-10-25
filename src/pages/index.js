@@ -76,8 +76,6 @@ const apiCardList = new Api(
   }
 )
 
-apiCardList.getCardList();
-
 const createNewCard = (data) => {
   const card = new Card(
   data,
