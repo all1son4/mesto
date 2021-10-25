@@ -12,6 +12,8 @@ import UserInfo from '../components/UserInfo.js';
 import PopupForDelete from '../components/PopupForDelete';
 import UserAvatar from '../components/UserAvatar.js';
 
+import Api from '../components/Api.js';
+
 const opneEditAvatarButton = document.querySelector('.profile__image')
 const openEditPopupButton = document.querySelector('.profile__edit-button');
 const cardAddButton = document.querySelector('.profile__add-button');
@@ -19,6 +21,15 @@ const formProfile = document.querySelector('#form-profile');
 const formCard = document.querySelector('#form-card');
 const formAvatar = document.querySelector('#form-avatar');
 
+const apiUserInfo = new Api(
+  {
+    url: "https://nomoreparties.co/v1/cohort-29/users/me",
+    headers: {
+      authorization: "624546b9-bde3-4fa2-b3a8-c5df4547d603",
+      "content-type": "application/json",
+    }
+  }
+)
 
 const userInfo = new UserInfo({
   userName: '.profile__name',
@@ -54,6 +65,18 @@ imagePopup.setEventListeners();
 const handleImageClick = (data) => {
   imagePopup.open(data);
 };
+
+const apiCardList = new Api(
+  {
+    url: "https://mesto.nomoreparties.co/v1/cohort-29/cards",
+    headers: {
+      authorization: "624546b9-bde3-4fa2-b3a8-c5df4547d603",
+      "content-type": "application/json",
+    }
+  }
+)
+
+apiCardList.getCardList();
 
 const createNewCard = (data) => {
   const card = new Card(
