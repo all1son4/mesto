@@ -1,18 +1,23 @@
+import UserAvatar from "./UserAvatar";
+
 export default class UserInfo {
-  constructor({userName, userDescription}) {
+  constructor({userName, userDescription, userAvatar}) {
     this._userName = document.querySelector(userName);
     this._userDescription = document.querySelector(userDescription);
+    this._userAvatar = document.querySelector(userAvatar)
   }
 
   getUserInfo() {
-    const dataUser = {};
-    dataUser.name = this._userName.textContent;
-    dataUser.description = this._userDescription.textContent;
-    return dataUser;
+    return {
+      name: this._userName.textContent,
+      description: this._userDescription.textContent,
+      avatar: this._userAvatar.style.backgroundImage.slice(5, -2)
+    }
   }
 
-  setUserInfo({name, description}) {
-    this._userName.textContent = name;
-    this._userDescription.textContent = description;
+  setUserInfo({name, description, avatar}) {
+    if (name) this._userName.textContent = name;
+    if (description) this._userDescription.textContent = description;
+    if (avatar) this._userAvatar.style.backgroundImage = `url('${avatar}')`;
   }
 }

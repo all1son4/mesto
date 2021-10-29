@@ -1,14 +1,13 @@
 export default class UserAvatar {
   constructor(userAvatar) {
-    this._userAvatar = document.querySelector(userAvatar);
+    this._userAvatar = document.querySelector(userAvatar).style.backgroundImage
   }
 
   getUserAvatar() {
-    const avatar = this._userAvatar.src;
-    return avatar;
+    return this._userAvatar.slice(5, -2);
   }
 
   setUserAvatar(avatar) {
-    this._userAvatar.src = avatar;
+    this._userAvatar = `url('${avatar}')`;
   }
 }

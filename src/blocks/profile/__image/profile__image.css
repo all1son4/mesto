@@ -1,5 +1,8 @@
 .profile__image {
-  background: url(../../../images/Kusto.jpg);
+  background-image: url('../../../images/Kusto.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   width: 120px;
   height: 120px;
   grid-area: image;

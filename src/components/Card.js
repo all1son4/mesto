@@ -6,9 +6,6 @@ export default class Card { //создание класса Карточки
     this._title = data.name;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick
-    this._popupSubmit = new PopupForDelete('.popup_type_delete', (event) => {
-      cardList._cardRemove(event);
-    });
   }
 
   _getTemplate() { //приватный метод шаблона карточки
@@ -40,7 +37,7 @@ export default class Card { //создание класса Карточки
     .querySelector('.element__remove-button')
     .addEventListener('click', () => {  //событие удаления карточки
       // this._cardRemove(event);
-      this._popupSubmit.open();
+      // this._popupSubmit.open();
     });
 
     this._element
