@@ -9,4 +9,5 @@
   overflow: hidden;
   max-width: 190px;
   align-self: center;
+  display: inline-block;
 }

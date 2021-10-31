@@ -33,6 +33,52 @@ export default class Api {
      return this._get(query);
   }
 
+  addNewCard({name, link}) {
+    const query = "cards"
+
+    return this._set(query, "POST", {name, link})
+  }
+
+  deleteCard(cardID) {
+    const query = `cards/${cardID}`
+
+    return this._delete(query, "DELETE")
+  }
+
+  likeCard(cardID) {
+    const query = `cards/likes/${cardID}`
+
+    return this._put(query, "PUT")
+  }
+
+  unlikeCard(cardID) {
+    const query = `cards/likes/${cardID}`
+
+    return this._delete(query, "DELETE")
+  }
+
+  _put(query, method) {
+    const options = {
+      method,
+      headers: {
+        authorization: this._token,
+      },
+    }
+    return fetch(this._url(query), options)
+      .then(res => res.ok ? res.json() : Promise.reject(`Упс, получилась ошибка: ${res.status}`))
+  }
+
+  _delete(query, method) {
+    const options = {
+      method,
+      headers: {
+        authorization: this._token,
+      },
+    }
+    return fetch(this._url(query), options)
+      .then(res => res.ok ? res.json() : Promise.reject(`Упс, получилась ошибка: ${res.status}`))
+  }
+
   _get(query) {
     const options = {
       headers: {

@@ -28,4 +28,22 @@ export default class PopupWithForm extends Popup {
     inputList.forEach(inputElement => formValues[inputElement.name] = inputElement.value);
     return formValues;
   }
+
+  loadingInfo(isLoading) {
+    if (isLoading) {
+      this._popupFormElement.querySelector('.popup__submit-button').textContent = 'Сохранение...';
+    }
+    else {
+      this._popupFormElement.querySelector('.popup__submit-button').textContent = "Сохранить"
+    }
+  }
+
+  loadindCard(isLoading) {
+    if (isLoading) {
+      this._popupFormElement.querySelector('.popup__submit-button').textContent = 'Создание...';
+    }
+    else {
+      this._popupFormElement.querySelector('.popup__submit-button').textContent = "Создать"
+    }
+  }
 }

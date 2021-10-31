@@ -1,5 +1,3 @@
-import UserAvatar from "./UserAvatar";
-
 export default class UserInfo {
   constructor({userName, userDescription, userAvatar}) {
     this._userName = document.querySelector(userName);
@@ -15,9 +13,10 @@ export default class UserInfo {
     }
   }
 
-  setUserInfo({name, description, avatar}) {
+  setUserInfo({name, description, avatar, userID}) {
     if (name) this._userName.textContent = name;
     if (description) this._userDescription.textContent = description;
     if (avatar) this._userAvatar.style.backgroundImage = `url('${avatar}')`;
+    if (userID) this._userID = userID;
   }
 }

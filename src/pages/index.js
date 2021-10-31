@@ -32,31 +32,61 @@ const api = new Api(
 const userInfo = new UserInfo({
   userName: '.profile__name',
   userDescription: '.profile__description',
-  userAvatar: '.profile__image'
+  userAvatar: '.profile__image',
 });
 
 const handleImageClick = (data) => {
   imagePopup.open(data);
 };
 
+// const handleDeleteClick = (card) => {
+//   deleteCardPopup.open(card);
+// }
+
+let userID;
 const createNewCard = (data) => {
-  const card = new Card(
-  data,
+  const card = new Card({
+    data,
+    handleImageClick,
+    handleDeleteClick: () => {
+      deleteCardPopup.open(card)
+    },
+    handleLikeClick: () => {
+      const checkStatus = card.checkLikeStatus();
+
+      if (checkStatus) {
+        api
+          .unlikeCard(card.getID())
+          .then((data) => {
+            card.setLikes(data.likes);
+          })
+          .catch(err => alert(`Ошибка обработки лайка: ${err}`))
+      }
+
+      else {
+        api
+          .likeCard(card.getID())
+          .then((data) => {
+            card.setLikes(data.likes);
+          })
+          .catch(err => alert(`Ошибка обработки лайка: ${err}`))
+      }
+    }
+  },
   '#element-template',
-  handleImageClick);
+  userID)
+
   const cardElement = card.generateCard();
 
   return cardElement;
 };
 
-const initialCards = api.getCardList()
-
 const cardList = new Section ({
-  items: initialCards,
   renderer: (data) => {
     cardList.addItem(createNewCard(data));
   }
 }, '.elements');
+// cardList.renderItem();
 
 api
   .getAppInfo()
@@ -67,8 +97,12 @@ api
     userInfo.setUserInfo({
       name: userInfoRes.name,
       description: userInfoRes.about,
-      avatar: userInfoRes.avatar
+      avatar: userInfoRes.avatar,
     })
+    userID = userInfoRes._id
+
+    cardList.setItems(cardListRes)
+    cardList.renderItem()
   })
   .catch(err => alert(`Ошибка полученя данных: ${err}`))
 
@@ -80,6 +114,7 @@ const userInfoPopup = new PopupWithForm('.popup_type_edit', (name, description) 
     userInfo.setUserInfo(name, description);
     const data = userInfo.getUserInfo();
 
+    userInfoPopup.loadingInfo(true);
     api
       .setUserInfoApi(data.name, data.description)
       .then(userInfoRes => {
@@ -89,6 +124,9 @@ const userInfoPopup = new PopupWithForm('.popup_type_edit', (name, description) 
         })
       })
       .catch(err => alert(`Ошибка сохранения данных профиля: ${err}`))
+      .finally(() => {
+        userInfoPopup.loadingInfo(false);
+      })
   });
 userInfoPopup.setEventListeners();
 
@@ -126,13 +164,23 @@ openEditPopupButton.addEventListener('click', openEditPopupProfileHandler);
 const imagePopup = new PopupWithImage('.popup_type_image');
 imagePopup.setEventListeners();
 
-const newCardPopup = new PopupWithForm('.popup_type_new-card', ({name_picture, picture_url}) => {
+const newCardPopup = new PopupWithForm('.popup_type_new-card', (data) => {
   // const data = {
   //   name: name_picture,
   //   link: picture_url
   // };
 
   // cardList.addItem(createNewCard(data));
+  newCardPopup.loadindCard(true);
+  api
+    .addNewCard({name: data.name_picture, link: data.picture_url})
+    .then((data) => {
+      cardList.addItem(createNewCard({name: data.name_picture, link: data.picture_url}));
+    })
+    .catch(err => alert(`Ошибка отпраки данных: ${err}`))
+    .finally(() => {
+      newCardPopup.loadindCard(false)
+    })
 });
 newCardPopup.setEventListeners();
 
@@ -145,8 +193,14 @@ cardAddButton.addEventListener('click', () => {
   newCardPopup.open();
 });
 
-const deleteCardPopup = new PopupForDelete('.popup_type_delete', (event) => {
-  cardList._cardRemove(event);
+const deleteCardPopup = new PopupForDelete('.popup_type_delete', (event, card) => {
+
+  api
+    .deleteCard(card.getID())
+    .then(() => {
+      card._cardRemove();
+    })
+    .catch(err => alert(`Ошибка удаления: ${err}`))
 });
 deleteCardPopup.setEventListeners();
 
