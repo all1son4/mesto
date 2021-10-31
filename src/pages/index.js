@@ -121,12 +121,16 @@ userInfoPopup.setEventListeners();
 const popupWithAvatar = new PopupWithForm('.popup_type_avatar', (avatar) => {
   userInfo.setUserInfo(avatar);
 
+  popupWithAvatar.loadingInfo(true)
   api
     .setUserAvatarApi(avatar)
     .then(userInfoRes => {
       userInfo.setUserInfo(userInfoRes.avatar)
     })
     .catch(err => alert(`Ошибка сохранения данных профиля: ${err}`))
+    .finally(() => {  
+      popupWithAvatar.loadingInfo(false)
+    })
 })
 popupWithAvatar.setEventListeners();
 
