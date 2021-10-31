@@ -1,7 +1,6 @@
 import './index.css';
 
 import Card from '../components/Card';
-// import { initialCards } from '../utils/cardList';
 import { validationConfig } from '../utils/validationConfig';
 import FormValidation from '../components/FormValidator';
 
@@ -10,8 +9,6 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupForDelete from '../components/PopupForDelete';
-// import UserAvatar from '../components/UserAvatar.js';
-
 import Api from '../components/Api.js';
 
 const opneEditAvatarButton = document.querySelector('.profile__image')
@@ -38,10 +35,6 @@ const userInfo = new UserInfo({
 const handleImageClick = (data) => {
   imagePopup.open(data);
 };
-
-// const handleDeleteClick = (card) => {
-//   deleteCardPopup.open(card);
-// }
 
 let userID;
 const createNewCard = (data) => {
@@ -86,7 +79,6 @@ const cardList = new Section ({
     cardList.addItem(createNewCard(data));
   }
 }, '.elements');
-// cardList.renderItem();
 
 api
   .getAppInfo()
@@ -105,10 +97,6 @@ api
     cardList.renderItem()
   })
   .catch(err => alert(`Ошибка полученя данных: ${err}`))
-
-// const userInfoPopup = new PopupWithForm('.popup_type_edit', (data) => {
-//   userInfo.setUserInfo(data);
-// });
 
 const userInfoPopup = new PopupWithForm('.popup_type_edit', (name, description) => {
     userInfo.setUserInfo(name, description);
@@ -148,10 +136,6 @@ formProfileValidation.enableValidation();
 const openEditPopupProfileHandler = () => {
   const data = userInfo.getUserInfo();
 
-  // for (let key in data) {
-  //   formProfile.elements[key].value = data[key]
-  // };
-
   formProfile.name.value = data.name;
   formProfile.description.value = data.description
 
@@ -165,17 +149,12 @@ const imagePopup = new PopupWithImage('.popup_type_image');
 imagePopup.setEventListeners();
 
 const newCardPopup = new PopupWithForm('.popup_type_new-card', (data) => {
-  // const data = {
-  //   name: name_picture,
-  //   link: picture_url
-  // };
-
-  // cardList.addItem(createNewCard(data));
   newCardPopup.loadindCard(true);
   api
     .addNewCard({name: data.name_picture, link: data.picture_url})
     .then((data) => {
-      cardList.addItem(createNewCard({name: data.name_picture, link: data.picture_url}));
+      console.log(data)
+      cardList.addItem(createNewCard(data));
     })
     .catch(err => alert(`Ошибка отпраки данных: ${err}`))
     .finally(() => {
@@ -203,20 +182,6 @@ const deleteCardPopup = new PopupForDelete('.popup_type_delete', (event, card) =
     .catch(err => alert(`Ошибка удаления: ${err}`))
 });
 deleteCardPopup.setEventListeners();
-
-// const popupWithAvatar = new PopupWithForm('.popup_type_avatar', (avatar) => {
-//   userAvatar.setUserAvatar(avatar);
-//   const avatar = userAvatar.getUserInfo();
-//   api
-//     .setUserInfoApi(avatar)
-//     .then(userInfoRes => {
-//       userAvatar.setUserInfo({
-//         avatar: userInfoRes.avatar,
-//       })
-//     })
-//     .catch(err => alert(`Ошибка сохранения данных профиля: ${err}`))
-// })
-// popupWithAvatar.setEventListeners();
 
 const popupFormAvatarValitadion = new FormValidation(validationConfig, formAvatar);
 popupFormAvatarValitadion.enableValidation();

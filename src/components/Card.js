@@ -1,5 +1,3 @@
-import PopupForDelete from "./PopupForDelete.js";
-
 export default class Card { //создание класса Карточки
   constructor({data, handleImageClick, handleDeleteClick, handleLikeClick}, cardSelector, userID) {
     this._image = data.link;
