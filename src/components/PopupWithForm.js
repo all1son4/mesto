@@ -29,21 +29,12 @@ export default class PopupWithForm extends Popup {
     return formValues;
   }
 
-  loadingInfo(isLoading) {
+  loading(isLoading, messageProcessing, messageDefault) {
     if (isLoading) {
-      this._popupFormElement.querySelector('.popup__submit-button').textContent = 'Сохранение...';
+      this._popupFormElement.querySelector('.popup__submit-button').textContent = messageProcessing;
     }
     else {
-      this._popupFormElement.querySelector('.popup__submit-button').textContent = "Сохранить"
-    }
-  }
-
-  loadindCard(isLoading) {
-    if (isLoading) {
-      this._popupFormElement.querySelector('.popup__submit-button').textContent = 'Создание...';
-    }
-    else {
-      this._popupFormElement.querySelector('.popup__submit-button').textContent = "Создать"
+      this._popupFormElement.querySelector('.popup__submit-button').textContent = messageDefault
     }
   }
 }

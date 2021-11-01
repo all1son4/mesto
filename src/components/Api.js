@@ -65,7 +65,7 @@ export default class Api {
       },
     }
     return fetch(this._url(query), options)
-      .then(res => res.ok ? res.json() : Promise.reject(`Упс, получилась ошибка: ${res.status}`))
+    .then(this._getResponseData)
   }
 
   _delete(query, method) { //DELETE запрос для лайка и карточки на сервер
@@ -76,7 +76,7 @@ export default class Api {
       },
     }
     return fetch(this._url(query), options)
-      .then(res => res.ok ? res.json() : Promise.reject(`Упс, получилась ошибка: ${res.status}`))
+    .then(this._getResponseData)
   }
 
   _get(query) { //GET-запрос для данных от сервера
@@ -87,7 +87,7 @@ export default class Api {
     }
 
     return fetch(this._url(query), options)
-      .then(res => res.ok ? res.json() : Promise.reject(`Упс, получилась ошибка: ${res.status}`))
+    .then(this._getResponseData)
   }
 
   _set(query, method, body) { //SET-запрос для данных на сервер
@@ -101,10 +101,19 @@ export default class Api {
     }
 
     return fetch(this._url(query), options)
-      .then(res => res.ok ? res.json() : Promise.reject(`Упс, получилась ошибка: ${res.status}`))
+      .then(this._getResponseData)
   }
 
-  _url(query) { //создание ссылки для запросов 
+  _url(query) { //создание ссылки для запросов
     return `${this._adress}/${this._groupID}/${query}`
+  }
+
+  _getResponseData(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    else {
+      return Promise.reject(`Упс, получилась ошибка: ${res.status}`);
+    }
   }
 }

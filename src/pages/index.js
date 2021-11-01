@@ -99,12 +99,15 @@ api
   .catch(err => alert(`Ошибка полученя данных: ${err}`))
 
 const userInfoPopup = new PopupWithForm('.popup_type_edit', (name, description) => {
-    userInfo.setUserInfo(name, description);
-    const data = userInfo.getUserInfo();
+  userInfo.setUserInfo(name, description);
+  const data = userInfo.getUserInfo();
 
-    userInfoPopup.loadingInfo(true);
+    userInfoPopup.loading(true, 'Сохранение...', 'Сохранить');
     api
       .setUserInfoApi(data.name, data.description)
+    // .then(() => {
+    //   userInfo.setUserInfo(name, description);
+    // })
       .then(userInfoRes => {
         userInfo.setUserInfo({
           name: userInfoRes.name,
@@ -113,7 +116,7 @@ const userInfoPopup = new PopupWithForm('.popup_type_edit', (name, description) 
       })
       .catch(err => alert(`Ошибка сохранения данных профиля: ${err}`))
       .finally(() => {
-        userInfoPopup.loadingInfo(false);
+        userInfoPopup.loading(false, 'Сохранение...', 'Сохранить');
       })
   });
 userInfoPopup.setEventListeners();
@@ -121,15 +124,15 @@ userInfoPopup.setEventListeners();
 const popupWithAvatar = new PopupWithForm('.popup_type_avatar', (avatar) => {
   userInfo.setUserInfo(avatar);
 
-  popupWithAvatar.loadingInfo(true)
+  popupWithAvatar.loading(true, 'Сохранение...', 'Сохранить')
   api
     .setUserAvatarApi(avatar)
     .then(userInfoRes => {
       userInfo.setUserInfo(userInfoRes.avatar)
     })
     .catch(err => alert(`Ошибка сохранения данных профиля: ${err}`))
-    .finally(() => {  
-      popupWithAvatar.loadingInfo(false)
+    .finally(() => {
+      popupWithAvatar.loading(false, 'Сохранение...', 'Сохранить')
     })
 })
 popupWithAvatar.setEventListeners();
@@ -153,7 +156,7 @@ const imagePopup = new PopupWithImage('.popup_type_image');
 imagePopup.setEventListeners();
 
 const newCardPopup = new PopupWithForm('.popup_type_new-card', (data) => {
-  newCardPopup.loadindCard(true);
+  newCardPopup.loading(true, 'Создание....', 'Создать');
   api
     .addNewCard({name: data.name_picture, link: data.picture_url})
     .then((data) => {
@@ -162,7 +165,7 @@ const newCardPopup = new PopupWithForm('.popup_type_new-card', (data) => {
     })
     .catch(err => alert(`Ошибка отпраки данных: ${err}`))
     .finally(() => {
-      newCardPopup.loadindCard(false)
+      newCardPopup.loading(false, 'Создание....', 'Создать')
     })
 });
 newCardPopup.setEventListeners();
