@@ -98,21 +98,22 @@ api
   })
   .catch(err => alert(`Ошибка полученя данных: ${err}`))
 
-const userInfoPopup = new PopupWithForm('.popup_type_edit', (name, description) => {
+const userInfoPopup = new PopupWithForm('.popup_type_edit', (data) => {
   // userInfo.setUserInfo(name, description);
-  const data = userInfo.getUserInfo();
+  // const data = userInfo.getUserInfo();
 
     userInfoPopup.loading(true, 'Сохранение...', 'Сохранить');
     api
       .setUserInfoApi(data.name, data.description)
-      .then(() => {
-        userInfo.setUserInfo(name, description);
-      })
+      // .then(() => {
+      //   userInfo.setUserInfo(name, description);
+      // })
       .then(userInfoRes => {
         userInfo.setUserInfo({
           name: userInfoRes.name,
           description: userInfoRes.about
         })
+        userInfoPopup.close()
       })
       .catch(err => alert(`Ошибка сохранения данных профиля: ${err}`))
       .finally(() => {
@@ -129,6 +130,7 @@ const popupWithAvatar = new PopupWithForm('.popup_type_avatar', (avatar) => {
     .setUserAvatarApi(avatar)
     .then(userInfoRes => {
       userInfo.setUserInfo(userInfoRes.avatar)
+      popupWithAvatar.close()
     })
     .catch(err => alert(`Ошибка сохранения данных профиля: ${err}`))
     .finally(() => {
@@ -160,8 +162,8 @@ const newCardPopup = new PopupWithForm('.popup_type_new-card', (data) => {
   api
     .addNewCard({name: data.name_picture, link: data.picture_url})
     .then((data) => {
-      console.log(data)
       cardList.addItem(createNewCard(data));
+      newCardPopup.close()
     })
     .catch(err => alert(`Ошибка отпраки данных: ${err}`))
     .finally(() => {
