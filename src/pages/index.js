@@ -99,15 +99,15 @@ api
   .catch(err => alert(`Ошибка полученя данных: ${err}`))
 
 const userInfoPopup = new PopupWithForm('.popup_type_edit', (name, description) => {
-  userInfo.setUserInfo(name, description);
+  // userInfo.setUserInfo(name, description);
   const data = userInfo.getUserInfo();
 
     userInfoPopup.loading(true, 'Сохранение...', 'Сохранить');
     api
       .setUserInfoApi(data.name, data.description)
-    // .then(() => {
-    //   userInfo.setUserInfo(name, description);
-    // })
+      .then(() => {
+        userInfo.setUserInfo(name, description);
+      })
       .then(userInfoRes => {
         userInfo.setUserInfo({
           name: userInfoRes.name,
