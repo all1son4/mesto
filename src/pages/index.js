@@ -187,6 +187,7 @@ const deleteCardPopup = new PopupForDelete('.popup_type_delete', (event, card) =
     .deleteCard(card.getID())
     .then(() => {
       card._cardRemove();
+      deleteCardPopup.close();
     })
     .catch(err => alert(`Ошибка удаления: ${err}`))
 });
