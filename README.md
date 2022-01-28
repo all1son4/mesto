@@ -1,34 +1,35 @@
-## Название проекта 
+## Project name 
 
-Mesto (Место)
+Mesto
 
-[Проект доступен по ссылке](mestojs.surge.sh)
+[The project is available here](mestojs.surge.sh)
 
-## Функционал 
+## Project Description 
 
-Одностраничное приложение, содержащее информацию о пользователе, карточки как пользователя, так и всех, кто использует данный сервер. Пользователь может меня свое имя, информацию о себе, свою аватарку, добавлять свои карточки, удалять свои карточки, отмечать понравившееся карточки. Во всех модальных окнах с формами присутствует валидация.
+A single page application containing information about the user, cards of both the user and everyone who uses this server. The user can change his name, information about himself, his avatar, add his cards, delete his cards, mark the cards he likes. All modal windows with forms have validation.
 
-## Стек
+## Stack
 
-+ Вся логика написана на JavaScript
++ JavaScript
 + API
-+ Семантические тэги HTML5
++ Semantics tegs HTML5
 + Webpack
 + Babel
-+ Структура БЭМ (Nested)
-+ ООП
++ BEM structure (Nested)
++ OOP
++ Node.js
 
-## Развертывание 
+## Deployment 
 
-Требуется установка Node.js, инструментов Webpack, Babel. 
+Requires installation of Node.js, Webpack tools, Babel. 
 
-Для запуска проекта локально сначала нужна сборка командой:
+Build before running the project locally:
 ### `npm run build`
 
-Затем для открытия проекта локально выполняется команда:
+To deploy the project locally, run the command:
 ### `npm run dev`
 
-## Можно доработать
+## Future improvements
 
-+ Добавление описания места, изображенного в большом открывщемся окне.
-+ Можно подумать о редизайне страницы.
++ Adding a description of the place shown in the large window that opens
++ Possible redesign of the page
