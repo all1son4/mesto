@@ -2,7 +2,7 @@
 
 Mesto
 
-[The project is available here](mestojs.surge.sh)
+![The project is available here](mestojs.surge.sh)
 
 ## Project Description 
 
